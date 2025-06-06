@@ -83,6 +83,17 @@ bash scripts/training/core/qwen_2_5_dfew_zf_run_2.sh <nnodes> <nproc_per_node> <
 bash scripts/training/core/qwen_2_5_dfew_zf_run.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
+### **Core Training Scripts Comparison**
+| Feature | qwen_2_5_dfew_zf_run_2.sh | qwen_2_5_dfew_zf_run.sh |
+|---------|---------------------------|-------------------------|
+| **Complexity** | Advanced/Full-featured | Simplified/Basic |
+| **Debug Mode** | Enabled by default | Standard logging |
+| **Cache Usage** | Disabled (use_cache_false) | Default cache settings |
+| **Offloading** | Full offloading enabled | Standard configuration |
+| **Dataset** | Full DFEW with emotion labels | Basic DFEW dataset |
+| **Reward System** | With clipping mechanism | Standard GRPO |
+| **Recommended For** | Production training | Testing/Development |
+
 ### Emotion Label Training Scripts
 Located in `training/emotion_label/` - Scripts focused on emotion recognition training.
 
@@ -107,6 +118,16 @@ bash scripts/training/emotion_label/qwen_2_5_dfew_add_emotion_label_2.sh <nnodes
 bash scripts/training/emotion_label/qwen_2_5_dfew_add_emotion_label.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
+### **Emotion Label Training Scripts Comparison**
+| Feature | qwen_2_5_dfew_add_emotion_label_2.sh | qwen_2_5_dfew_add_emotion_label.sh |
+|---------|--------------------------------------|-------------------------------------|
+| **Dataset Size** | 2000 samples with emotion labels | Standard dataset size |
+| **Script Used** | grpo_qwen_2_5_dfew_reward_add_emotion_label.py | Basic emotion label integration |
+| **Reward System** | Enhanced emotion-aware rewards | Standard emotion labeling |
+| **Training Intensity** | Intensive/Production-level | Basic/Testing |
+| **Memory Usage** | Higher (larger dataset) | Lower (smaller dataset) |
+| **Recommended For** | Full emotion recognition training | Initial testing/prototyping |
+
 ### Reward-based Training Scripts
 Located in `training/reward_based/` - Advanced reward systems for emotion recognition.
 
@@ -129,6 +150,16 @@ bash scripts/training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label_2.
 bash scripts/training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
+### **Reward-based Training Scripts Comparison**
+| Feature | qwen_2_5_dfew_add_reward_for_emotion_label_2.sh | qwen_2_5_dfew_add_reward_for_emotion_label.sh |
+|---------|--------------------------------------------------|------------------------------------------------|
+| **Reward Complexity** | Advanced reward mechanisms | Basic reward system |
+| **Emotion Classification** | Enhanced reward for emotion classes | Simplified reward for emotions |
+| **Training Approach** | Multi-faceted reward system | Single reward mechanism |
+| **Performance** | Higher accuracy potential | Faster training |
+| **Computational Cost** | Higher (complex rewards) | Lower (simple rewards) |
+| **Recommended For** | Research/Production | Quick experiments |
+
 ### COCO Training Scripts
 Located in `training/coco/` - Scripts for training on COCO dataset.
 
@@ -146,9 +177,22 @@ bash scripts/training/coco/qwen_2_5_zf_run_2_coco.sh <nnodes> <nproc_per_node> <
 **Purpose**: Basic COCO training script
 - Simplified COCO training configuration
 
-#### `training/coco/zf_run_2_29_04_2025_coco.sh` / `training/coco/zf_run_29_04_2025_coco.sh`
-**Purpose**: Legacy COCO training scripts
-- Historical versions of COCO training
+#### `training/coco/zf_run_2_29_04_2025_coco.sh`
+**Purpose**: Legacy COCO training script (April 29, 2025)
+- Historical version with advanced configuration
+
+#### `training/coco/zf_run_29_04_2025_coco.sh`
+**Purpose**: Legacy COCO training script (April 29, 2025)
+- Historical version with basic configuration
+
+### **COCO Training Scripts Comparison**
+| Feature | qwen_2_5_zf_run_2_coco.sh | qwen_2_5_zf_run_coco.sh | zf_run_2_29_04_2025_coco.sh | zf_run_29_04_2025_coco.sh |
+|---------|----------------------------|--------------------------|------------------------------|----------------------------|
+| **Version** | Current/Latest | Current/Basic | Legacy (April 2025) | Legacy (April 2025) |
+| **Complexity** | Advanced features | Simplified | Advanced legacy | Basic legacy |
+| **Model** | Qwen2.5-VL optimized | Qwen2.5-VL basic | Historical model | Historical model |
+| **Configuration** | Full COCO setup | Basic COCO | Legacy advanced | Legacy basic |
+| **Recommended For** | Production COCO training | Testing COCO | Historical reference | Historical testing |
 
 ### Legacy Training Scripts
 Located in `training/legacy/` - Historical training scripts.
@@ -159,6 +203,15 @@ Located in `training/legacy/` - Historical training scripts.
 
 #### `training/legacy/dfew_zf_run_29_04_2025.sh`
 **Purpose**: Simplified legacy DFEW training
+
+### **Legacy Training Scripts Comparison**
+| Feature | dfew_zf_run_2_29_04_2025.sh | dfew_zf_run_29_04_2025.sh |
+|---------|------------------------------|----------------------------|
+| **Complexity** | Advanced legacy configuration | Basic legacy configuration |
+| **Training Features** | Full feature set (April 2025) | Simplified features |
+| **Historical Value** | Complete reference implementation | Minimal reference |
+| **Use Case** | Understanding advanced legacy setup | Quick legacy testing |
+| **Documentation** | Comprehensive legacy example | Basic legacy example |
 
 ### Interactive Training
 Located in `training/interactive/` - Enhanced monitoring and interactive features.
@@ -196,6 +249,16 @@ bash scripts/inference/run_2_inference_1_5_2025.sh <nnodes> <nproc_per_node> <ma
 bash scripts/inference/run_inference_1_5_2025.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
+### **Inference Scripts Comparison**
+| Feature | run_2_inference_1_5_2025.sh | run_inference_1_5_2025.sh |
+|---------|------------------------------|----------------------------|
+| **Precision** | FP16 precision | Default precision |
+| **Batch Size** | Optimized (batch size 1) | Basic batch size |
+| **Logging** | Enhanced inference logging | Standard logging |
+| **Performance** | Optimized for production | Basic inference |
+| **Output Detail** | Comprehensive results | Standard results |
+| **Recommended For** | Production inference | Quick testing |
+
 ## Distributed Training Scripts
 Located in `distributed/` - Multi-GPU and multi-node training setup.
 
@@ -218,6 +281,16 @@ bash scripts/distributed/elastic_ddp_nccl_job.sh <nnodes> <nproc_per_node> <mast
 ```bash
 bash scripts/distributed/elastic_ddp_nccl.sh <nnodes> <nproc_per_node> <master_addr>
 ```
+
+### **Distributed Training Scripts Comparison**
+| Feature | elastic_ddp_nccl_job.sh | elastic_ddp_nccl.sh |
+|---------|-------------------------|---------------------|
+| **Functionality** | Job launcher/coordinator | Direct training script |
+| **Setup Complexity** | Advanced job management | Basic distributed setup |
+| **Environment Config** | Comprehensive env setup | Minimal setup |
+| **Multi-GPU Support** | Advanced GPU coordination | Basic GPU support |
+| **Job Management** | Full job lifecycle | Simple execution |
+| **Recommended For** | Production clusters | Development/Testing |
 
 ## Usage Guidelines
 
