@@ -7,33 +7,33 @@ This directory contains all the bash scripts for the Visual-RFT project, organiz
 scripts/
 ├── README.md
 ├── setup/
-│   └── setup.sh
+│   └── install_dependencies.sh
 ├── training/
 │   ├── core/
-│   │   ├── qwen_2_5_dfew_zf_run_2.sh
-│   │   └── qwen_2_5_dfew_zf_run.sh
+│   │   ├── train_advanced.sh
+│   │   └── train_basic.sh
 │   ├── emotion_label/
-│   │   ├── qwen_2_5_dfew_add_emotion_label_2.sh
-│   │   └── qwen_2_5_dfew_add_emotion_label.sh
+│   │   ├── train_enhanced.sh
+│   │   └── train_basic.sh
 │   ├── reward_based/
-│   │   ├── qwen_2_5_dfew_add_reward_for_emotion_label_2.sh
-│   │   └── qwen_2_5_dfew_add_reward_for_emotion_label.sh
+│   │   ├── train_advanced_reward.sh
+│   │   └── train_basic_reward.sh
 │   ├── coco/
-│   │   ├── qwen_2_5_zf_run_2_coco.sh
-│   │   ├── qwen_2_5_zf_run_coco.sh
-│   │   ├── zf_run_2_29_04_2025_coco.sh
-│   │   └── zf_run_29_04_2025_coco.sh
+│   │   ├── train_advanced_coco.sh
+│   │   ├── train_basic_coco.sh
+│   │   ├── legacy_advanced_coco.sh
+│   │   └── legacy_basic_coco.sh
 │   ├── legacy/
-│   │   ├── dfew_zf_run_2_29_04_2025.sh
-│   │   └── dfew_zf_run_29_04_2025.sh
+│   │   ├── legacy_advanced_dfew.sh
+│   │   └── legacy_basic_dfew.sh
 │   └── interactive/
-│       └── interaction_qwen_2_5_dfew_zf_run_2.sh
+│       └── train_interactive.sh
 ├── inference/
-│   ├── run_2_inference_1_5_2025.sh
-│   └── run_inference_1_5_2025.sh
+│   ├── inference_advanced.sh
+│   └── inference_basic.sh
 └── distributed/
-    ├── elastic_ddp_nccl_job.sh
-    └── elastic_ddp_nccl.sh
+    ├── distributed_advanced.sh
+    └── distributed_basic.sh
 ```
 
 ## Table of Contents
@@ -45,7 +45,7 @@ scripts/
 
 ## Setup Scripts
 
-### `setup/setup.sh`
+### `setup/install_dependencies.sh`
 **Purpose**: Environment setup and dependency installation
 - Installs the Visual-RFT package in development mode
 - Installs required dependencies: wandb, tensorboardx, qwen_vl_utils, flash-attn, vllm
@@ -53,7 +53,7 @@ scripts/
 
 **Usage**:
 ```bash
-bash scripts/setup/setup.sh
+bash scripts/setup/install_dependencies.sh
 ```
 
 ## Training Scripts
@@ -61,7 +61,7 @@ bash scripts/setup/setup.sh
 ### Core Training Scripts
 Located in `training/core/` - These scripts train the Qwen2.5-VL model using GRPO (Generalized Reward Policy Optimization) on the DFEW dataset.
 
-#### `training/core/qwen_2_5_dfew_zf_run_2.sh`
+#### `training/core/train_advanced.sh`
 **Purpose**: Main training script for Qwen2.5-VL-3B with DFEW dataset
 - **Model**: Qwen2.5-VL-3B-Instruct
 - **Dataset**: DFEW with emotion labels
@@ -70,22 +70,22 @@ Located in `training/core/` - These scripts train the Qwen2.5-VL model using GRP
 
 **Usage**:
 ```bash
-bash scripts/training/core/qwen_2_5_dfew_zf_run_2.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/core/train_advanced.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
-#### `training/core/qwen_2_5_dfew_zf_run.sh`
+#### `training/core/train_basic.sh`
 **Purpose**: Simplified version of the main training script
 - Basic DFEW training without advanced features
 - Similar configuration but smaller dataset
 
 **Usage**:
 ```bash
-bash scripts/training/core/qwen_2_5_dfew_zf_run.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/core/train_basic.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
 ### **Core Training Scripts Comparison**
-| Feature | qwen_2_5_dfew_zf_run_2.sh | qwen_2_5_dfew_zf_run.sh |
-|---------|---------------------------|-------------------------|
+| Feature | train_advanced.sh | train_basic.sh |
+|---------|-------------------|----------------|
 | **Complexity** | Advanced/Full-featured | Simplified/Basic |
 | **Debug Mode** | Enabled by default | Standard logging |
 | **Cache Usage** | Disabled (use_cache_false) | Default cache settings |
@@ -97,7 +97,7 @@ bash scripts/training/core/qwen_2_5_dfew_zf_run.sh <nnodes> <nproc_per_node> <ma
 ### Emotion Label Training Scripts
 Located in `training/emotion_label/` - Scripts focused on emotion recognition training.
 
-#### `training/emotion_label/qwen_2_5_dfew_add_emotion_label_2.sh`
+#### `training/emotion_label/train_enhanced.sh`
 **Purpose**: Training with enhanced emotion label processing
 - **Dataset**: 2000 samples with emotion labels
 - **Script**: Uses `grpo_qwen_2_5_dfew_reward_add_emotion_label.py`
@@ -105,22 +105,22 @@ Located in `training/emotion_label/` - Scripts focused on emotion recognition tr
 
 **Usage**:
 ```bash
-bash scripts/training/emotion_label/qwen_2_5_dfew_add_emotion_label_2.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/emotion_label/train_enhanced.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
-#### `training/emotion_label/qwen_2_5_dfew_add_emotion_label.sh`
+#### `training/emotion_label/train_basic.sh`
 **Purpose**: Basic emotion label training
 - Standard emotion label integration
 - Smaller dataset for testing
 
 **Usage**:
 ```bash
-bash scripts/training/emotion_label/qwen_2_5_dfew_add_emotion_label.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/emotion_label/train_basic.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
 ### **Emotion Label Training Scripts Comparison**
-| Feature | qwen_2_5_dfew_add_emotion_label_2.sh | qwen_2_5_dfew_add_emotion_label.sh |
-|---------|--------------------------------------|-------------------------------------|
+| Feature | train_enhanced.sh | train_basic.sh |
+|---------|-------------------|----------------|
 | **Dataset Size** | 2000 samples with emotion labels | Standard dataset size |
 | **Script Used** | grpo_qwen_2_5_dfew_reward_add_emotion_label.py | Basic emotion label integration |
 | **Reward System** | Enhanced emotion-aware rewards | Standard emotion labeling |
