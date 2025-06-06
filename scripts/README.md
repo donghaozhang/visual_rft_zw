@@ -131,27 +131,27 @@ bash scripts/training/emotion_label/train_basic.sh <nnodes> <nproc_per_node> <ma
 ### Reward-based Training Scripts
 Located in `training/reward_based/` - Advanced reward systems for emotion recognition.
 
-#### `training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label_2.sh`
+#### `training/reward_based/train_advanced_reward.sh`
 **Purpose**: Advanced reward system for emotion recognition
 - Incorporates reward mechanisms for emotion classification
 - Enhanced training with emotion-specific rewards
 
 **Usage**:
 ```bash
-bash scripts/training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label_2.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/reward_based/train_advanced_reward.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
-#### `training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label.sh`
+#### `training/reward_based/train_basic_reward.sh`
 **Purpose**: Basic reward-based emotion training
 - Simplified reward system for emotion labels
 
 **Usage**:
 ```bash
-bash scripts/training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/reward_based/train_basic_reward.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
 ### **Reward-based Training Scripts Comparison**
-| Feature | qwen_2_5_dfew_add_reward_for_emotion_label_2.sh | qwen_2_5_dfew_add_reward_for_emotion_label.sh |
+| Feature | train_advanced_reward.sh | train_basic_reward.sh |
 |---------|--------------------------------------------------|------------------------------------------------|
 | **Reward Complexity** | Advanced reward mechanisms | Basic reward system |
 | **Emotion Classification** | Enhanced reward for emotion classes | Simplified reward for emotions |
@@ -163,30 +163,30 @@ bash scripts/training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label.sh
 ### COCO Training Scripts
 Located in `training/coco/` - Scripts for training on COCO dataset.
 
-#### `training/coco/qwen_2_5_zf_run_2_coco.sh`
+#### `training/coco/train_advanced_coco.sh`
 **Purpose**: Training on COCO dataset
 - **Dataset**: COCO dataset for general vision tasks
 - **Model**: Qwen2.5-VL with COCO-specific configuration
 
 **Usage**:
 ```bash
-bash scripts/training/coco/qwen_2_5_zf_run_2_coco.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/coco/train_advanced_coco.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
-#### `training/coco/qwen_2_5_zf_run_coco.sh`
+#### `training/coco/train_basic_coco.sh`
 **Purpose**: Basic COCO training script
 - Simplified COCO training configuration
 
-#### `training/coco/zf_run_2_29_04_2025_coco.sh`
+#### `training/coco/legacy_advanced_coco.sh`
 **Purpose**: Legacy COCO training script (April 29, 2025)
 - Historical version with advanced configuration
 
-#### `training/coco/zf_run_29_04_2025_coco.sh`
+#### `training/coco/legacy_basic_coco.sh`
 **Purpose**: Legacy COCO training script (April 29, 2025)
 - Historical version with basic configuration
 
 ### **COCO Training Scripts Comparison**
-| Feature | qwen_2_5_zf_run_2_coco.sh | qwen_2_5_zf_run_coco.sh | zf_run_2_29_04_2025_coco.sh | zf_run_29_04_2025_coco.sh |
+| Feature | train_advanced_coco.sh | train_basic_coco.sh | legacy_advanced_coco.sh | legacy_basic_coco.sh |
 |---------|----------------------------|--------------------------|------------------------------|----------------------------|
 | **Version** | Current/Latest | Current/Basic | Legacy (April 2025) | Legacy (April 2025) |
 | **Complexity** | Advanced features | Simplified | Advanced legacy | Basic legacy |
@@ -197,15 +197,15 @@ bash scripts/training/coco/qwen_2_5_zf_run_2_coco.sh <nnodes> <nproc_per_node> <
 ### Legacy Training Scripts
 Located in `training/legacy/` - Historical training scripts.
 
-#### `training/legacy/dfew_zf_run_2_29_04_2025.sh`
+#### `training/legacy/legacy_advanced_dfew.sh`
 **Purpose**: DFEW training script from April 29, 2025
 - Legacy version with different configuration
 
-#### `training/legacy/dfew_zf_run_29_04_2025.sh`
+#### `training/legacy/legacy_basic_dfew.sh`
 **Purpose**: Simplified legacy DFEW training
 
 ### **Legacy Training Scripts Comparison**
-| Feature | dfew_zf_run_2_29_04_2025.sh | dfew_zf_run_29_04_2025.sh |
+| Feature | legacy_advanced_dfew.sh | legacy_basic_dfew.sh |
 |---------|------------------------------|----------------------------|
 | **Complexity** | Advanced legacy configuration | Basic legacy configuration |
 | **Training Features** | Full feature set (April 2025) | Simplified features |
@@ -216,20 +216,20 @@ Located in `training/legacy/` - Historical training scripts.
 ### Interactive Training
 Located in `training/interactive/` - Enhanced monitoring and interactive features.
 
-#### `training/interactive/interaction_qwen_2_5_dfew_zf_run_2.sh`
+#### `training/interactive/train_interactive.sh`
 **Purpose**: Interactive training session for DFEW
 - Enhanced logging and monitoring
 - Interactive features for training observation
 
 **Usage**:
 ```bash
-bash scripts/training/interactive/interaction_qwen_2_5_dfew_zf_run_2.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/training/interactive/train_interactive.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
 ## Inference Scripts
 Located in `inference/` - Model inference and evaluation scripts.
 
-#### `inference/run_2_inference_1_5_2025.sh`
+#### `inference/inference_advanced.sh`
 **Purpose**: Model inference on COCO dataset
 - **Script**: Uses `Qwen2_VL_coco_infere_zw.py`
 - **Configuration**: FP16 precision, batch size 1
@@ -237,20 +237,20 @@ Located in `inference/` - Model inference and evaluation scripts.
 
 **Usage**:
 ```bash
-bash scripts/inference/run_2_inference_1_5_2025.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/inference/inference_advanced.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
-#### `inference/run_inference_1_5_2025.sh`
+#### `inference/inference_basic.sh`
 **Purpose**: Basic inference script
 - Simplified inference configuration
 
 **Usage**:
 ```bash
-bash scripts/inference/run_inference_1_5_2025.sh <nnodes> <nproc_per_node> <master_addr>
+bash scripts/inference/inference_basic.sh <nnodes> <nproc_per_node> <master_addr>
 ```
 
 ### **Inference Scripts Comparison**
-| Feature | run_2_inference_1_5_2025.sh | run_inference_1_5_2025.sh |
+| Feature | inference_advanced.sh | inference_basic.sh |
 |---------|------------------------------|----------------------------|
 | **Precision** | FP16 precision | Default precision |
 | **Batch Size** | Optimized (batch size 1) | Basic batch size |
@@ -366,7 +366,7 @@ bash scripts/training/core/qwen_2_5_dfew_zf_run_2.sh 1 4 localhost
 bash scripts/training/emotion_label/qwen_2_5_dfew_add_emotion_label_2.sh 1 4 localhost
 
 # Train with reward system
-bash scripts/training/reward_based/qwen_2_5_dfew_add_reward_for_emotion_label_2.sh 1 4 localhost
+bash scripts/training/reward_based/train_advanced_reward.sh 1 4 localhost
 
 # Train on COCO dataset
 bash scripts/training/coco/qwen_2_5_zf_run_2_coco.sh 1 4 localhost
